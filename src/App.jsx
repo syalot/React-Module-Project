@@ -1,9 +1,12 @@
 import React from 'react';
+import Body from './components/layout/Body';
 
 class App extends React.Component {
   render(){
     return (
-      <h1>Welcome to React</h1>
+      <div id="App">
+        <Body/>
+      </div>
     );
   }
 }
