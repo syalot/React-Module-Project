@@ -5,23 +5,58 @@ class Side extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      'look' : false,
-    }
+      'animation': {
+        'from': {
+          'key': true,
+          'style': {
+            'height': '0rem',
+            'transitionDuration': '.6s'
+          }
+        }
+      }
+    };
   }
-  handleadd(){
+  handleOpenSubMenu(key){
+    let animation = this.state.animation;
+
+    switch (key) {
+      case 'from':
+        if(animation.from.key){
+          animation.from = {
+            'key': false,
+            'style':{
+              'height': '7.5rem',
+              'transitionDuration': '.45s'
+            }
+          }
+        }
+        else{
+          animation.from = {
+            'key': true,
+            'style':{
+              'height': '0rem',
+              'transitionDuration': '.45s'
+            }
+          }
+        }
+        break;
+    }
+
     this.setState({
-      'look' : !this.state.look,
-    });
+      'animation': animation,
+    })
   }
   render(){
     return(
       <nav id="Side">
         <div className="bg"></div>
         <ul className="main">
-          <li><Link to="/" className="mainLink icon">main</Link></li>
-          <li>
-            <span className={"mainLink icon " + (this.state.look ? 'checked' : '')} onClick={this.handleadd.bind(this)}>from <icon className="side-icon"/></span>
-            <ul className={"sub " + (this.state.look ? 'open' : '')}>
+          <li onClick={this.handleOpenSubMenu.bind(this, 'main')}>
+            <Link to="/" className="mainLink icon">main</Link>
+          </li>
+          <li onClick={this.handleOpenSubMenu.bind(this, 'from')}>
+            <span className="mainLink icon">from <icon className="side-icon"/></span>
+            <ul className="sub" style={this.state.animation.from.style}>
               <li><Link to="/form/text" className="subLink"><icon className="link-icon"/>Text</Link></li>
               <li><Link to="/form/checkbox" className="subLink"><icon className="link-icon"/>CheckBox</Link></li>
               <li><Link to="/form/radio" className="subLink"><icon className="link-icon"/>Radio</Link></li>

@@ -33,7 +33,7 @@ li{
   left: 0;
   width: 14.445rem;
   height: 100%;
-  background-color: #524c49;
+  background-color: #2c2e30;
 
 }
 #Side .bg{
@@ -41,15 +41,14 @@ li{
   height: 3.2rem;
   background-color: #ff8a3e;
 }
+
+/* 메인 */
 #Side .main{
   overflow-y: auto;
   height: calc(100% - 3.2rem);
 }
 #Side .main > li{
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-#Side .sub > li{
-  margin: 0 0 0 .5rem;
 }
 /* 아이콘(부모) */
 #Side .icon{
@@ -60,15 +59,18 @@ li{
   position: absolute;
   top: 50%;
   right: 1rem;
-  width: .75rem;
-  height: .75rem;
-  background-color: #fff;
+  width: .6rem;
+  height: .6rem;
+  background-image: url('/image/link.png');
+  background-size: cover;
   transform: translate(0, -50%);
 }
 /* 링크 */
 #Side .mainLink, #Side .subLink{
   display: block;
-  padding: .775rem 1.75rem .775rem 1rem;
+  padding: 0 1.75rem 0 1rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
   text-decoration: none;
   color: #c8c8c8;
   font-weight: 300;
@@ -85,6 +87,16 @@ li{
 #Side .checked{
   background-color: rgba(0, 0, 0, 0.2);
   color: #ff8a3e;
+}
+
+/* 서브 */
+#Side .sub{
+  height: 0rem;
+  overflow: hidden;
+  transition-timing-function: ease;
+}
+#Side .sub > li{
+  margin: 0 0 0 .5rem;
 }
 /* 서브 아이콘 */
 #Side .link-icon{
