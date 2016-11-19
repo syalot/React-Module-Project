@@ -50,22 +50,6 @@ li{
 #Side .main > li{
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
-/* 아이콘(부모) */
-#Side .icon{
-  position: relative;
-}
-/* 아이콘(자식) */
-#Side .side-icon{
-  position: absolute;
-  top: 50%;
-  right: 1rem;
-  width: .6rem;
-  height: .6rem;
-  background-image: url('/image/link.png');
-  background-size: cover;
-  transform: translate(0, -50%);
-}
-/* 링크 */
 #Side .mainLink, #Side .subLink{
   display: block;
   padding: 0 1.75rem 0 1rem;
@@ -78,13 +62,13 @@ li{
   cursor: pointer;
   word-wrap: break-word;
 }
-#Side .mainLink:hover{
-  background-color: rgba(0, 0, 0, 0.3);
+#Side .mainLink{
+  position: relative;
 }
-#Side .subLink:hover{
-  color: #ff8a3e;
+#Side .mainLink:hover, #Side .subLink:hover{
+  background-color: rgba(0, 0, 0, 0.1);
 }
-#Side .checked{
+#Side .mainLink.checked{
   background-color: rgba(0, 0, 0, 0.2);
   color: #ff8a3e;
 }
@@ -93,20 +77,43 @@ li{
 #Side .sub{
   height: 0rem;
   overflow: hidden;
+
+  /*== @animation ==*/
   transition-timing-function: ease;
 }
-#Side .sub > li{
-  margin: 0 0 0 .5rem;
+#Side .subLink{
+  padding: 0 1.75rem 0 1.5rem;
 }
-/* 서브 아이콘 */
+#Side .subLink.checked{
+  color: #ff8a3e;
+}
+/* 아이콘(꺽쇠) */
 #Side .link-icon{
   vertical-align: middle;
   display: inline-block;
-  margin: 0 .3rem 0 0;
+  margin: 0 .4rem 0 0;
   width: .3rem;
   height: .3rem;
   border-radius: 50%;
   background-color: #fff;
+}
+/* 아이콘(원) */
+#Side .side-icon{
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  width: .6rem;
+  height: .6rem;
+  background-image: url('/image/link.png');
+  background-size: cover;
+  margin: -.3rem -.3rem;
+
+  /*== @animation ==*/
+  transition-duration: .3s;
+}
+#Side .side-icon.on{
+  /*== @animation ==*/
+  transform: rotate(90deg);
 }
 
 

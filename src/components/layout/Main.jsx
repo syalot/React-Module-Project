@@ -1,21 +1,23 @@
 import React from 'react';
-import Reflux from 'reflux';
 
-import SiteMenuAction from '../../actionStores/local/SiteMenuAction';
-import SiteMenuStore from '../../actionStores/local/SiteMenuStore';
+// ActionStores
+// import Reflux from 'reflux';
+// import SiteMenuAction from '../../actionStores/local/SiteMenuAction';
+// import SiteMenuStore from '../../actionStores/local/SiteMenuStore';
+//
+// componentWillMount(){
+//   SiteMenuAction.readMenu();
+// };
+//
+// componentDidMount(){
+//   this.actionStoresListen = SiteMenuStore.listen(this.handleMenuSetting.bind(this));
+// };
+//
+// componentWillUnmount(){
+//   this.actionStoresListen();
+// };
 
 class Main extends React.Component{
-  componentWillMount(){
-    console.log(SiteMenuAction);
-    SiteMenuAction.readMenu();
-  }
-  componentDidMount(){
-    console.log(SiteMenuAction);
-    this.unUserTest = SiteMenuStore.listen(this.handleUserTest.bind(this));
-  }
-  handleUserTest(message){
-    console.log(message);
-  }
   render(){
     return(
       <div>

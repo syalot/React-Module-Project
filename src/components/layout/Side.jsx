@@ -2,70 +2,148 @@ import React from 'react';
 import { Link } from 'react-router';
 
 class Side extends React.Component{
-  constructor(props) {
+  constructor(props){
     super(props);
-    this.state = {
-      'animation': {
-        'from': {
-          'key': true,
-          'style': {
-            'height': '0rem',
-            'transitionDuration': '.6s'
-          }
-        }
-      }
-    };
-  }
-  handleOpenSubMenu(key){
-    let animation = this.state.animation;
 
-    switch (key) {
-      case 'from':
-        if(animation.from.key){
-          animation.from = {
-            'key': false,
-            'style':{
-              'height': '7.5rem',
-              'transitionDuration': '.45s'
-            }
-          }
-        }
-        else{
-          animation.from = {
-            'key': true,
-            'style':{
-              'height': '0rem',
-              'transitionDuration': '.45s'
-            }
-          }
-        }
-        break;
+    // 메뉴 오브젝트
+    this.menuList = [
+      {
+        'key'   : 'main',
+        'title' : 'Main',
+        'subMenu' : [],
+      }, {
+        'key'   : 'form',
+        'title' : 'Form',
+        'subMenu' : [
+          {
+            'key'   : 'text',
+            'title' : 'Text',
+          }, {
+            'key'   : 'checkbox',
+            'title' : 'CheckBox',
+          },
+        ],
+      },
+    ];
+    // 선택된 메뉴를 담는 오브젝트
+    this.switch = {};
+    this.state = {
+      menuList : this.menuList,
+      switch   : this.switch,
+    };
+  };
+
+  componentWillMount(){};
+
+  componentDidMount(){};
+
+  componentWillReceiveProps(nextProps){};
+
+  componentWillUnmount(){
+    this.state = {};
+  };
+
+  handleClickMenu(key, subKey){
+    this.switch = {};
+
+    if(subKey){
+      this.switch[key] = true;
+      this.switch[key+'-'+subKey] = true;
+    }
+    else{
+      this.switch[key] = true;
     }
 
     this.setState({
-      'animation': animation,
-    })
-  }
+      switch : this.switch,
+    });
+  };
+
+  handleClickSubMenu(key){
+    let menuList = this.menuList;
+
+    for(let row of menuList){
+      if(row.key === key){
+        let count = row.subMenu.length;
+
+        if(row.open){
+          row.open = false;
+          row.style = {
+            height             : '0rem',
+            transitionDuration : .3 + (Math.floor(count / 5) * .1) + 's',
+          };
+        }
+        else{
+          row.open = true;
+          row.style = {
+            height             : (2.5 * count) + 'rem',
+            transitionDuration : .3 + (Math.floor(count / 5) * .1) + 's',
+          };
+        }
+      }
+    }
+
+    this.setState({
+      menuList : this.menuList,
+    });
+  };
+
   render(){
     return(
       <nav id="Side">
         <div className="bg"></div>
         <ul className="main">
-          <li onClick={this.handleOpenSubMenu.bind(this, 'main')}>
-            <Link to="/" className="mainLink icon">main</Link>
-          </li>
-          <li onClick={this.handleOpenSubMenu.bind(this, 'from')}>
-            <span className="mainLink icon">from <icon className="side-icon"/></span>
-            <ul className="sub" style={this.state.animation.from.style}>
-              <li><Link to="/form/text" className="subLink"><icon className="link-icon"/>Text</Link></li>
-              <li><Link to="/form/checkbox" className="subLink"><icon className="link-icon"/>CheckBox</Link></li>
-              <li><Link to="/form/radio" className="subLink"><icon className="link-icon"/>Radio</Link></li>
-            </ul>
-          </li>
+          {
+            this.state.menuList.map((row, i) => {
+              return(
+                row.subMenu.length
+                ?
+                  <li key={row.key}>
+                    <span
+                      className={'mainLink ' + (this.switch[row.key] ? 'checked' : '')}
+                      onClick={this.handleClickSubMenu.bind(this, row.key)}
+                    >
+                      {row.title}<icon className={'side-icon ' + (row.open ? 'on' : '')}/>
+                    </span>
+                    <ul className="sub" style={row.style}>
+                      {
+                        row.subMenu.map((subRow) => {
+                          return(
+                            <li
+                              key={subRow.key}
+                              onClick={this.handleClickMenu.bind(this, row.key, subRow.key)}
+                            >
+                              <Link
+                                to={'/' + row.key + '/' + subRow.key}
+                                className={'subLink ' + (this.switch[row.key+'-'+subRow.key] ? 'checked' : '')}
+                              >
+                                <icon className="link-icon"/>{subRow.title}
+                              </Link>
+                            </li>
+                          )
+                        })
+                      }
+                    </ul>
+                  </li>
+                :
+                  <li
+                    key={row.key}
+                    onClick={this.handleClickMenu.bind(this, row.key, '')}
+                  >
+                    <Link
+                      to={'/' + row.key}
+                      className={'mainLink ' + (this.switch[row.key] ? 'checked' : '')}
+                    >
+                      {row.title}
+                    </Link>
+                  </li>
+              )
+            })
+          }
         </ul>
       </nav>
     );
-  }
+  };
 };
 
 export default Side;

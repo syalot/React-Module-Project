@@ -8,7 +8,7 @@ class Body extends React.Component{
     return(
       <div id="Body">
         <Match exactly pattern='/' component={Main}/>
-        <Match exactly pattern='/a' component={Main}/>
+        <Match exactly pattern='/main' component={Main}/>
         <Match exactly pattern='/b' component={Main}/>
         <Match exactly pattern='/c' component={Main}/>
         <Match exactly pattern='/d' component={Main}/>
