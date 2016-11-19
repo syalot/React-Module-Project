@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Link, Match, Miss } from 'react-router';
 
-import Home from '../routerTest/Home';
-import About from '../routerTest/About';
+import Main from './Main';
+import RouterTest from '../routerTest/RouterTest';
 
 class Body extends React.Component{
   render(){
@@ -11,13 +11,12 @@ class Body extends React.Component{
         <Router>
           <div>
             <ul>
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/about">About</Link></li>
+              <li><Link to="/">main</Link></li>
+              <li><Link to="/routerTest">routerTest</Link></li>
             </ul>
             <hr/>
-            <Match exactly pattern='/' component={Home}/>
-            <Match exactly pattern='/Home' component={Home}/>
-            <Match exactly pattern='/about' component={About}/>
+            <Match exactly pattern='/' component={Main}/>
+            <Match pattern='/routerTest' component={RouterTest}/>
           </div>
         </Router>
       </div>
