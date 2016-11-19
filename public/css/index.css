@@ -1,0 +1,108 @@
+*{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+html{
+  font-size: 18px;
+  font-family: sans-serif;
+}
+body{
+  background-color: #f5f5f5;
+}
+li{
+  list-style: none;
+}
+
+/*----
+  기본 디자인
+----*/
+#App{
+  position: relative;
+  width: 100%;
+}
+
+
+
+/*---- 메뉴 ----*/
+#Side{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 14.445rem;
+  height: 100%;
+  background-color: #524c49;
+
+}
+#Side .bg{
+  width: 100%;
+  height: 3.2rem;
+  background-color: #ff8a3e;
+}
+#Side .main{
+  overflow-y: auto;
+  height: calc(100% - 3.2rem);
+}
+#Side .main > li{
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+#Side .sub > li{
+  margin: 0 0 0 .5rem;
+}
+/* 아이콘(부모) */
+#Side .icon{
+  position: relative;
+}
+/* 아이콘(자식) */
+#Side .side-icon{
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  width: .75rem;
+  height: .75rem;
+  background-color: #fff;
+  transform: translate(0, -50%);
+}
+/* 링크 */
+#Side .mainLink, #Side .subLink{
+  display: block;
+  padding: .775rem 1.75rem .775rem 1rem;
+  text-decoration: none;
+  color: #c8c8c8;
+  font-weight: 300;
+  font-size: .85rem;
+  cursor: pointer;
+  word-wrap: break-word;
+}
+#Side .mainLink:hover{
+  background-color: rgba(0, 0, 0, 0.3);
+}
+#Side .subLink:hover{
+  color: #ff8a3e;
+}
+#Side .checked{
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #ff8a3e;
+}
+/* 서브 아이콘 */
+#Side .link-icon{
+  vertical-align: middle;
+  display: inline-block;
+  margin: 0 .3rem 0 0;
+  width: .3rem;
+  height: .3rem;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+
+
+/*---- 본문 ----*/
+#Body{
+  position: absolute;
+  top: 0;
+  left: 14.445rem;
+  width: calc(100% - 14.445rem);
+}
