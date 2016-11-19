@@ -1,8 +1,8 @@
 import React from 'react';
 import Reflux from 'reflux';
 
-import SiteMenuAction from '../../actionStores/actionStore/SiteMenuAction';
-import SiteMenuStore from '../../actionStores/actionStore/SiteMenuStore';
+import SiteMenuAction from '../../actionStores/local/SiteMenuAction';
+import SiteMenuStore from '../../actionStores/local/SiteMenuStore';
 
 class Main extends React.Component{
   componentWillMount(){
