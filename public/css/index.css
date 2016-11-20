@@ -45,7 +45,7 @@ li{
 /* 메인 */
 #Side .main{
   overflow-y: auto;
-  height: calc(100% - 3.2rem);
+  height: calc(100% - .4rem);
 }
 #Side .main > li{
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
