@@ -22,10 +22,7 @@ class Main extends React.Component{
     return(
       <div id="Main">
         <div className="template header">
-          <h2>Main</h2>
-        </div>
-        <div className="template box">
-          <span>메인 페이지 입니다.</span>
+          <h2>Welcome to React-Module-Project</h2>
         </div>
       </div>
     );
