@@ -1,52 +1,47 @@
 import React from 'react';
 import ModuleList from '../../modules/ModuleList.js';
 
-class FormText extends React.Component{
+class FormCheckbox extends React.Component{
+  handleChangeData(name, value, event){
+    console.log(name, value);
+  }
   render(){
-    console.log('render');
     return(
-      <div id="FormText">
+      <div id="FormCheckbox">
         <div className="template header">
-          <h2>Input - Text</h2>
-          <div className="template mainDate">작성일 : 2016년 11월 21일 11시 41분 40초</div>
+          <h2>Input - CheckBox</h2>
+          <div className="template mainDate">작성일 : 2016년 11월 21일 15시 27분 12초</div>
         </div>
         <div className="template box">
           <div className="template subTitleBox">
             <span className="template subTitle">설명</span>
           </div>
           <span className="template contents">
-            &lt;input&gt; 태그에 text 타입입니다.
+            &lt;input&gt; 태그에 checkbox 타입입니다.
           </span>
         </div>
         <div className="template box">
           <div className="template subTitleBox">
             <span className="template subTitle">샘플</span>
           </div>
-          <ModuleList.InputText
-            name="test"
-            value="ABC"
-            placeholder="입력하세요."
+          <ModuleList.InputCheckBox
             labelName="기본"
-            minLength="1"
-            maxLength="5"
-            reg="EN"
+            onChange={this.handleChangeData.bind(this)}
           />
           <br/>
-          <ModuleList.InputText
+          <ModuleList.InputCheckBox
             labelName="막기"
             disabled={true}
           />
           <br/>
-          <ModuleList.InputText
+          <ModuleList.InputCheckBox
             labelName="읽기"
             readOnly={true}
-            value="ABC"
           />
-
         </div>
       </div>
     );
   }
 };
 
-export default FormText;
+export default FormCheckbox;
