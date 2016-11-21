@@ -1,0 +1,140 @@
+*{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+html{
+  font-size: 18px;
+  font-family: sans-serif;
+}
+body{
+  background-color: #f5f5f5;
+  min-width: 768px;
+}
+li{
+  list-style: none;
+}
+
+/*----
+  기본 디자인
+----*/
+#App{
+  position: relative;
+  width: 100%;
+}
+
+
+
+/*---- 메뉴 ----*/
+#Side{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 14.445rem;
+  height: 100%;
+  background-color: #2c2e30;
+  z-index: 99;
+
+}
+#Side .bg{
+  width: 100%;
+  height: .4rem;
+  background-color: #ff8a3e;
+}
+
+/* 메인 */
+#Side .main{
+  overflow-y: auto;
+  height: calc(100% - .4rem);
+}
+#Side .main > li{
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+#Side .mainLink, #Side .subLink{
+  display: block;
+  padding: 0 1.75rem 0 1rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  text-decoration: none;
+  color: #c8c8c8;
+  font-weight: 300;
+  font-size: .85rem;
+  cursor: pointer;
+  word-wrap: break-word;
+}
+#Side .mainLink{
+  position: relative;
+}
+#Side .mainLink:hover, #Side .subLink:hover{
+  background-color: rgba(0, 0, 0, 0.1);
+}
+#Side .mainLink.checked{
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #ff8a3e;
+}
+
+/* 서브 */
+#Side .sub{
+  height: 0rem;
+  overflow: hidden;
+
+  /*== @animation ==*/
+  transition-timing-function: ease;
+}
+#Side .subLink{
+  padding: 0 1.75rem 0 1.5rem;
+}
+#Side .subLink.checked{
+  color: #ff8a3e;
+}
+/* 아이콘(꺽쇠) */
+#Side .link-icon{
+  vertical-align: middle;
+  display: inline-block;
+  margin: 0 .4rem 0 0;
+  width: .3rem;
+  height: .3rem;
+  border-radius: 50%;
+  background-color: #fff;
+}
+/* 아이콘(원) */
+#Side .side-icon{
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  width: .6rem;
+  height: .6rem;
+  background-image: url('/image/link.png');
+  background-size: cover;
+  margin: -.3rem -.3rem;
+
+  /*== @animation ==*/
+  transition-duration: .3s;
+}
+#Side .side-icon.on{
+  /*== @animation ==*/
+  transform: rotate(90deg);
+}
+
+
+
+/*---- 본문 ----*/
+#Body{
+  position: absolute;
+  top: 0;
+  left: 14.445rem;
+  padding: 1rem;
+  width: calc(100% - 14.445rem);
+  color: #2c2e30;
+}
+.template.header > h2{
+  font-size: 2rem;
+}
+.template.box:not(:last-child), .template.header:not(:last-child){
+  margin: 0 0 .9rem 0;
+}
+.template.box > span{
+  font-size: .9rem;
+}
