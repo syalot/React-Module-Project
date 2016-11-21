@@ -9,14 +9,6 @@ class Body extends React.Component{
       <div id="Body">
         <Match exactly pattern='/' component={Main}/>
         <Match exactly pattern='/main' component={Main}/>
-        <Match exactly pattern='/b' component={Main}/>
-        <Match exactly pattern='/c' component={Main}/>
-        <Match exactly pattern='/d' component={Main}/>
-        <Match exactly pattern='/e' component={Main}/>
-        <Match exactly pattern='/f' component={Main}/>
-        <Match exactly pattern='/g' component={Main}/>
-        <Match exactly pattern='/h' component={Main}/>
-        <Match exactly pattern='/i' component={Main}/>
       </div>
     );
   }

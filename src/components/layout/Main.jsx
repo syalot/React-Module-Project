@@ -20,8 +20,13 @@ import React from 'react';
 class Main extends React.Component{
   render(){
     return(
-      <div>
-        <h2>Main</h2>
+      <div id="Main">
+        <div className="template header">
+          <h2>Main</h2>
+        </div>
+        <div className="template box">
+          <span>메인 페이지 입니다.</span>
+        </div>
       </div>
     );
   }
