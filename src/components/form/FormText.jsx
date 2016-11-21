@@ -1,4 +1,5 @@
 import React from 'react';
+import ModuleList from '../../modules/ModuleList.js';
 
 class FormText extends React.Component{
   render(){
@@ -15,6 +16,9 @@ class FormText extends React.Component{
           <span className="template contents">
             &lt;input&gt; 태그에 text 타입입니다.
           </span>
+        </div>
+        <div className="template box">
+          <ModuleList.InputText/>
         </div>
       </div>
     );

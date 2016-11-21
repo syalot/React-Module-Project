@@ -8,9 +8,11 @@ class Body extends React.Component{
   render(){
     return(
       <div id="Body">
-        <Match exactly pattern='/' component={Main}/>
-        <Match pattern='/main' component={Main}/>
-        <Match pattern='/form' component={FormRouter}/>
+        <div className="center">
+          <Match exactly pattern='/' component={Main}/>
+          <Match pattern='/main' component={Main}/>
+          <Match pattern='/form' component={FormRouter}/>
+        </div>
       </div>
     );
   }
