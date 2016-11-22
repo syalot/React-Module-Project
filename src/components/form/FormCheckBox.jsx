@@ -8,36 +8,34 @@ class FormCheckbox extends React.Component{
   render(){
     return(
       <div id="FormCheckbox">
-        <div className="template header">
-          <h2>Input - CheckBox</h2>
-          <div className="template mainDate">작성일 : 2016년 11월 21일 15시 27분 12초</div>
+        <div className="template-header">
+          <h1>Input - CheckBox</h1>
+          <div>작성일 : 2016년 11월 21일 15시 27분 12초</div>
         </div>
-        <div className="template box">
-          <div className="template subTitleBox">
-            <span className="template subTitle">설명</span>
+        <div className="template-box">
+          <div className="group">
+            <div className="header">
+              <h2>설명</h2>
+            </div>
+            <div className="section">
+              <span>
+              &lt;input&gt; 태그에 checkbox 타입입니다.
+              </span>
+            </div>
           </div>
-          <span className="template contents">
-            &lt;input&gt; 태그에 checkbox 타입입니다.
-          </span>
         </div>
-        <div className="template box">
-          <div className="template subTitleBox">
-            <span className="template subTitle">샘플</span>
+        <div className="template-box">
+          <div className="group">
+            <div className="header">
+              <h2>예제</h2>
+            </div>
+            <div className="section">
+              <ModuleList.InputCheckBox
+                labelName="기본"
+                onChange={this.handleChangeData.bind(this)}
+              />
+            </div>
           </div>
-          <ModuleList.InputCheckBox
-            labelName="기본"
-            onChange={this.handleChangeData.bind(this)}
-          />
-          <br/>
-          <ModuleList.InputCheckBox
-            labelName="막기"
-            disabled={true}
-          />
-          <br/>
-          <ModuleList.InputCheckBox
-            labelName="읽기"
-            readOnly={true}
-          />
         </div>
       </div>
     );

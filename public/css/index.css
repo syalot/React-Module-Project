@@ -69,10 +69,10 @@ li{
   position: relative;
 }
 #Side .mainLink:hover, #Side .subLink:hover{
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 #Side .mainLink.checked{
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.3);
   color: #ff8a3e;
 }
 
@@ -95,8 +95,8 @@ li{
   vertical-align: middle;
   display: inline-block;
   margin: 0 .4rem 0 0;
-  width: .3rem;
-  height: .3rem;
+  width: .2rem;
+  height: .2rem;
   border-radius: 50%;
   background-color: #fff;
 }
@@ -120,7 +120,9 @@ li{
 }
 
 
-/*---- 본문 ----*/
+/*----
+  본문
+----*/
 #Body{
   position: absolute;
   top: 0;
@@ -136,31 +138,45 @@ li{
   max-width: 1080px;
   width: 100%;
 }
-.template.header > h2{
-  font-size: 1.8rem;
-}
-.template.box, .template.header{
+
+.template-header,
+.template-box{
   background-color: #ffffff;
   box-shadow: 0px 4px 5px rgba(0,0,0,0.1);
-  padding: 1.5rem;
+  padding: 2rem;
 }
-.template.box:not(:last-child), .template.header:not(:last-child){
-  margin: 0 0 .9rem 0;
+.template-header:not(:last-child),
+.template-box:not(:last-child){
+  margin: 0 0 .8rem 0;
 }
-.template.mainDate{
-  font-size: .7rem;
+.template-header > h1{
+  font-size: 2rem;
+  line-height: 2.2rem;
 }
-.template.subTitleBox{
-  margin: 0 0 .7rem 0;
+.template-header > div{
+  font-size: .65rem;
 }
-.template.subTitle{
-  padding: .25rem .5rem;
-  font-size: .9rem;
-  background-color: #ff8a3e;
-  color: #fff;
+.template-box .group:not(:first-child){
+  padding-top: 1.5rem;
 }
-.template.contents{
-  font-size: .85rem;
+.template-box .group:not(:last-child){
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #f5f5f5;
+}
+.template-box .header{
+  margin: 0 0 .4rem 0;
+}
+.template-box .header > h2{
+  line-height: 1.3rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #ff8a3e;
+}
+.template-box .section{
+  font-size: .8rem;
+}
+.template-box .setting{
+  margin: .5rem 0;
 }
 
 
@@ -170,35 +186,38 @@ li{
 .template-Form-Module{
   display: inline-block;
 }
-.template-Form-Input{
+.template-Form-Module .default{
   border: 0.056rem solid #ddd;
   border-radius: .2rem;
   font-size: .65rem;
   font-family: sans-serif;
   color: #525458;
 }
-.template-Form-Label{
+.template-Form-Module label{
   vertical-align: middle;
+  display: inline-block;
   margin-right: .5rem;
+  height: 100%;
   font-size: .75rem;
   font-family: sans-serif;
-  color: #8e8e8e;
+  color: #707070;
 }
-.template-Form-disabled{
+.template-Form-Module .disabled{
   background-color: #e6e6e6;
+  color: #b6b6b6;
 }
 
 
 /*----
   input - text
 ----*/
-.template-Form-Input-Text{
+.template-Form-Module > .text{
   vertical-align: middle;
   padding: .5rem;
   width: 10rem;
-  height: 1.5rem;
+  height: 1.7rem;
 }
-.template-Form-Input-Text:focus{
+.template-Form-Module > .text:focus{
   border: 0.056rem solid #808080;
 }
 
@@ -206,14 +225,14 @@ li{
 /*----
   input - checkbox
 ----*/
-.template-Form-Input-CheckBox-Group{
+.template-Form-Module > .checkBox-group{
   vertical-align: middle;
   display: inline-block;
   position: relative;
   width: .8rem;
   height: .8rem;
 }
-.template-Form-Input-CheckBox{
+.template-Form-Module > .checkBox-group > .checkBox{
   position: absolute;
   top: 0;
   left: 0;
@@ -221,15 +240,15 @@ li{
   height: 100%;
   opacity: 0;
 }
-.template-Form-Input-CheckBox-Customizing{
+.template-Form-Module > .checkBox-group > .customizing{
   vertical-align: top;
   display: inline-block;
   width: 100%;
   height: 100%;
 }
-.template-Form-Input-CheckBox:checked + .template-Form-Input-CheckBox-Customizing{
+.template-Form-Module > .checkBox-group > .checkBox:checked + .customizing{
   background-color: #000;
 }
-.template-Form-Input-CheckBox:focus + .template-Form-Input-CheckBox-Customizing{
+.template-Form-Module > .checkBox-group > .checkBox:focus + .customizing{
   border: 0.056rem solid #808080;
 }

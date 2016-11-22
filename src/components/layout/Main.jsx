@@ -21,8 +21,8 @@ class Main extends React.Component{
   render(){
     return(
       <div id="Main">
-        <div className="template header">
-          <h2>Welcome to React-Module-Project</h2>
+        <div className="template-header">
+          <h1>Welcome to React-Module-Project</h1>
         </div>
       </div>
     );

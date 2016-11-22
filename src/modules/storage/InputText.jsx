@@ -1,8 +1,9 @@
 import React from 'react';
 
 const propTypes = {
-  name        : React.PropTypes.string,
   labelName   : React.PropTypes.string,
+  labelWidth  : React.PropTypes.string,
+  name        : React.PropTypes.string,
   value       : React.PropTypes.string,
   placeholder : React.PropTypes.string,
   minLength   : React.PropTypes.string,
@@ -10,18 +11,24 @@ const propTypes = {
   reg         : React.PropTypes.string,
   disabled    : React.PropTypes.bool,
   readOnly    : React.PropTypes.bool,
+  className   : React.PropTypes.string,
+  inputWidth  : React.PropTypes.string,
   onChange    : React.PropTypes.func,
 };
 const defaultProps = {
-  name        : undefined,
+
   labelName   : undefined,
-  value       : undefined,
+  labelWidth  : undefined,
+  name        : undefined,
+  value       : '',
   placeholder : undefined,
   minLength   : undefined,
   maxLength   : undefined,
   reg         : undefined,
   disabled    : false,
   readOnly    : false,
+  className   : '',
+  inputWidth  : undefined,
   onChange    : undefined,
 };
 
@@ -42,9 +49,12 @@ class InputText extends React.Component{
   componentDidMount(){};
 
   componentWillReceiveProps(nextProps){
-    if(nextProps.value === this.props.value){
-      this.Render['component'] = false;
-    }
+    this.setState({
+      value : nextProps.value
+    });
+    // if(nextProps.value === this.props.value){
+    //   this.Render['component'] = false;
+    // }
   };
 
   shouldComponentUpdate(nextProps, nextState){
@@ -92,6 +102,7 @@ class InputText extends React.Component{
 
       // 정규식 처리
       if(this.props.reg){
+        console.log('1');
         let regStorage = {
           KR  : /([^가-힣ㄱ-ㅎㅏ-ㅣ\x20])/i,
           EN  : /[^a-zA-Z]/g,
@@ -105,12 +116,13 @@ class InputText extends React.Component{
         }
       }
       else{
+        console.log('2',event.target.value);
         value = event.target.value;
       }
 
       // 부모 컴포넌트에 이벤트 전달
       if(this.props.onChange){
-        this.props.onChange(event);
+        this.props.onChange(this.props.name, value, event);
       }
 
       // 렌더링
@@ -129,14 +141,20 @@ class InputText extends React.Component{
   }
 
   render(){
+    let labelStyle = {
+      width : this.props.labelWidth
+    };
+    let inputStyle = {
+      width : this.props.inputWidth
+    };
     return(
-      <div className="template-Form-Module">
+      <div className={'template-Form-Module' + this.props.className}>
         {
           this.props.labelName
           ?
             <label
-              className="template-Form-Label"
               onClick={this.handleFocusIn.bind(this)}
+              style={this.props.labelWidth ? labelStyle : null}
             >
               {this.props.labelName}
             </label>
@@ -146,7 +164,7 @@ class InputText extends React.Component{
         <input
           type="text"
           ref="InputText"
-          className={'template-Form-Input template-Form-Input-Text ' + (this.props.disabled ? 'template-Form-disabled' : '')}
+          className={'default text ' + (this.props.disabled ? 'disabled' : '')}
           name={this.props.name}
           placeholder={this.props.placeholder}
           maxLength={this.props.maxLength}
@@ -155,6 +173,7 @@ class InputText extends React.Component{
           readOnly={this.props.readOnly}
           onChange={this.checkValueLive.bind(this)}
           onBlur={this.checkValueBlur.bind(this)}
+          style={this.props.inputWidth ? inputStyle : null}
         />
 
       </div>

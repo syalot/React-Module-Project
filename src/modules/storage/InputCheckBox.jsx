@@ -1,20 +1,22 @@
 import React from 'react';
 
 const propTypes = {
-  name      : React.PropTypes.string,
-  labelName : React.PropTypes.string,
-  checked   : React.PropTypes.bool,
-  disabled  : React.PropTypes.bool,
-  readOnly  : React.PropTypes.bool,
-  onChange  : React.PropTypes.func,
+  name       : React.PropTypes.string,
+  labelName  : React.PropTypes.string,
+  checked    : React.PropTypes.bool,
+  disabled   : React.PropTypes.bool,
+  readOnly   : React.PropTypes.bool,
+  labelWidth : React.PropTypes.string,
+  onChange   : React.PropTypes.func,
 };
 const defaultProps = {
-  name      : undefined,
-  labelName : undefined,
-  checked   : false,
-  disabled  : false,
-  readOnly  : false,
-  onChange  : undefined,
+  name       : undefined,
+  labelName  : undefined,
+  checked    : false,
+  disabled   : false,
+  readOnly   : false,
+  labelWidth : undefined,
+  onChange   : undefined,
 };
 
 class InputCheckBox extends React.Component{
@@ -71,7 +73,7 @@ class InputCheckBox extends React.Component{
   handleFocusIn(){
     if(this.handleLockCheck()){
       this.refs.InputCheckBox.focus();
-      this.handleChangeFlag();
+      this.refs.InputCheckBox.click();
     }
   };
 
@@ -92,36 +94,41 @@ class InputCheckBox extends React.Component{
     상위 컴포넌트로 이벤트 전파
   ----*/
   handleChangeEvent(event){
-    this.props.onChange(this.props.name, !this.state.checked, event);
+    if(this.props.onChange){
+      this.props.onChange(this.props.name, !this.state.checked, event);
+    }
   }
 
   render(){
+    let labelStyle = {
+      width : this.props.labelWidth
+    };
     return(
       <div className="template-Form-Module">
         {
           this.props.labelName
           ?
             <label
-              className="template-Form-Label"
               onClick={this.handleFocusIn.bind(this)}
+              style={this.props.labelWidth ? labelStyle : null}
             >
               {this.props.labelName}
             </label>
           :
             null
         }
-        <div className="template-Form-Input-CheckBox-Group">
+        <div className="checkBox-group">
           <input
             type="checkbox"
             ref="InputCheckBox"
-            className="template-Form-Input-CheckBox"
+            className="checkBox"
             name={this.props.name}
-            checked={this.state.checked}
+            defaultChecked={this.state.checked}
             disabled={this.props.disabled}
             readOnly={this.props.readOnly}
             onClick={this.handleChangeFlag.bind(this)}
           />
-        <span className={'template-Form-Input template-Form-Input-CheckBox-Customizing ' + (this.props.disabled ? 'template-Form-disabled' : '')}></span>
+        <span className={'default customizing ' + (this.props.disabled ? 'disabled' : '')}></span>
         </div>
       </div>
     );
