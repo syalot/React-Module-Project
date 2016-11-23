@@ -178,77 +178,9 @@ li{
 .template-box .setting{
   margin: .5rem 0;
 }
-
-
-/*----
-  input - 공통
-----*/
-.template-Form-Module{
+.template-box .setting .text-group{
+  padding: 0 0 0 .5rem;
+  vertical-align: middle;
   display: inline-block;
-}
-.template-Form-Module .default{
-  border: 0.056rem solid #ddd;
-  border-radius: .2rem;
   font-size: .65rem;
-  font-family: sans-serif;
-  color: #525458;
-}
-.template-Form-Module label{
-  vertical-align: middle;
-  display: inline-block;
-  margin-right: .5rem;
-  height: 100%;
-  font-size: .75rem;
-  font-family: sans-serif;
-  color: #707070;
-}
-.template-Form-Module .disabled{
-  background-color: #e6e6e6;
-  color: #b6b6b6;
-}
-
-
-/*----
-  input - text
-----*/
-.template-Form-Module > .text{
-  vertical-align: middle;
-  padding: .5rem;
-  width: 10rem;
-  height: 1.7rem;
-}
-.template-Form-Module > .text:focus{
-  border: 0.056rem solid #808080;
-}
-
-
-/*----
-  input - checkbox
-----*/
-.template-Form-Module > .checkBox-group{
-  vertical-align: middle;
-  display: inline-block;
-  position: relative;
-  width: .8rem;
-  height: .8rem;
-}
-.template-Form-Module > .checkBox-group > .checkBox{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-}
-.template-Form-Module > .checkBox-group > .customizing{
-  vertical-align: top;
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-}
-.template-Form-Module > .checkBox-group > .checkBox:checked + .customizing{
-  background-color: #000;
-}
-.template-Form-Module > .checkBox-group > .checkBox:focus + .customizing{
-  border: 0.056rem solid #808080;
 }

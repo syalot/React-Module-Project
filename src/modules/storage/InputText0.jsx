@@ -49,12 +49,17 @@ class InputText extends React.Component{
   componentDidMount(){};
 
   componentWillReceiveProps(nextProps){
-    this.setState({
-      value : nextProps.value
-    });
-    // if(nextProps.value === this.props.value){
-    //   this.Render['component'] = false;
-    // }
+    if(nextProps.name==="value"){
+      console.log('2-check : ', nextProps.value, this.state.value);
+    }
+    if(nextProps.value !== this.state.value || nextProps.disabled !== this.props.disabled || nextProps.readOnly !== this.props.readOnly){
+      this.setState({
+        value : nextProps.value
+      });
+    }
+    else{
+      this.Render['component'] = false;
+    }
   };
 
   shouldComponentUpdate(nextProps, nextState){
@@ -69,7 +74,9 @@ class InputText extends React.Component{
     };
   };
 
-  componentWillUnmount(){};
+  componentWillUnmount(){
+    this.state = {};
+  };
 
   /*----
     lock 체크
@@ -97,12 +104,12 @@ class InputText extends React.Component{
   ----*/
   /*-- 실시간 체크 --*/
   checkValueLive(event){
+    console.log('1-check : ',event.target.name, event.target.value);
     if(this.handleLockCheck()){
       let value = this.state.value;
 
       // 정규식 처리
       if(this.props.reg){
-        console.log('1');
         let regStorage = {
           KR  : /([^가-힣ㄱ-ㅎㅏ-ㅣ\x20])/i,
           EN  : /[^a-zA-Z]/g,
@@ -116,7 +123,6 @@ class InputText extends React.Component{
         }
       }
       else{
-        console.log('2',event.target.value);
         value = event.target.value;
       }
 
@@ -131,7 +137,7 @@ class InputText extends React.Component{
       });
     }
   }
-  /*-- 포커스 아웃시 --*/
+  /*-- 포커스 out --*/
   checkValueBlur(event){
     if(this.handleLockCheck()){
       if(event.target.value.length < Number(this.props.minLength)){
@@ -141,6 +147,9 @@ class InputText extends React.Component{
   }
 
   render(){
+    if(this.props.name === "test"){
+      console.log(this);
+    }
     let labelStyle = {
       width : this.props.labelWidth
     };

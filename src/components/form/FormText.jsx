@@ -7,15 +7,17 @@ class FormText extends React.Component{
 
     this.ChangeStorage = {
       data : {
-        labelWidth  : '50px',
         labelName   : '예제',
-        value       : '예제 입니다.',
-        placeholder : '예제 입니다.',
-        minLength   : '5',
-        maxLength   : '10',
+        labelWidth  : '50px',
         inputWidth  : '150px',
+        name        : 'test',
+        value       : '',
+        placeholder : '',
         disabled    : false,
-        readOnly    : false
+        readOnly    : false,
+        reg         : '',
+        maxLength   : '100',
+        minLength   : '0',
       }
     };
     this.state = {
@@ -23,15 +25,17 @@ class FormText extends React.Component{
     };
   };
   handleChangeDataText(name, value){
-    console.log(value);
     this.ChangeStorage.data[name] = value;
 
     this.setState({
       data : this.ChangeStorage.data
     });
-  }
+  };
+  handleRender(){
+    this.setState({});
+  };
   render(){
-    console.log('change');
+    console.log('render');
     return(
       <div id="FormText">
         <div className="template-header">
@@ -53,110 +57,136 @@ class FormText extends React.Component{
         <div className="template-box">
           <div className="group">
             <div className="header">
-              <h2>예제</h2>
+              <h2>Props</h2>
             </div>
             <div className="section">
               <span>
-                여기서 테스트를 할 수 있습니다
+                지원하는 메소드들의 설명과 미리보기를 지원함으로 테스트를 해보실 수 있습니다.
               </span>
             </div>
           </div>
           <div className="group">
             <div className="section">
               <div className="setting">
-                <ModuleList.InputText
-                  name="labelWidth"
-                  value={this.ChangeStorage.data['labelWidth']}
-                  placeholder="label 가로길이"
-                  labelName="labelWidth"
-                  labelWidth="70px"
-                  inputWidth="100px"
-                  onChange={this.handleChangeDataText.bind(this)}
-                />
-              </div>
-              <div className="setting">
-                <ModuleList.InputText
-                  name="labelName"
-                  value={this.ChangeStorage.data['labelName']}
-                  placeholder="label 값"
+                <ModuleList.FormText
                   labelName="labelName"
                   labelWidth="70px"
                   inputWidth="100px"
+                  name="labelName"
+                  value={this.ChangeStorage.data['labelName']}
+                  placeholder="label 이름"
                   onChange={this.handleChangeDataText.bind(this)}
                 />
+                <div className="text-group">
+                  <span className>&lt;label&gt; 태그에 내용을 정의할수 있습니다.<br/>또한 이 props를 사용시 자동으로 &lt;label&gt; 태그가 생성됩니다. [ 변수형 : String ]</span>
+                </div>
               </div>
               <div className="setting">
-                <ModuleList.InputText
-                  name="value"
-                  value={this.ChangeStorage.data['value']}
-                  placeholder="기본값"
-                  labelName="value"
+                <ModuleList.FormText
+                  labelName="labelWidth"
                   labelWidth="70px"
                   inputWidth="100px"
+                  name="labelWidth"
+                  value={this.ChangeStorage.data['labelWidth']}
+                  placeholder="label 길이"
                   onChange={this.handleChangeDataText.bind(this)}
                 />
+                <div className="text-group">
+                  <span className>&lt;label&gt; 태그에 가로길이 정의할수 있습니다. [ 변수형 : String ]</span>
+                </div>
               </div>
               <div className="setting">
-                <ModuleList.InputText
-                  name="placeholder"
-                  value={this.ChangeStorage.data['placeholder']}
-                  placeholder="임시값"
-                  labelName="placeholder"
-                  labelWidth="70px"
-                  inputWidth="100px"
-                  onChange={this.handleChangeDataText.bind(this)}
-                />
-              </div>
-              <div className="setting">
-                <ModuleList.InputText
-                  name="minLength"
-                  value={this.ChangeStorage.data['minLength']}
-                  placeholder="최소입력수"
-                  labelName="minLength"
-                  reg="NUM"
-                  labelWidth="70px"
-                  inputWidth="100px"
-                  onChange={this.handleChangeDataText.bind(this)}
-                />
-              </div>
-              <div className="setting">
-                <ModuleList.InputText
-                  name="maxLength"
-                  value={this.ChangeStorage.data['maxLength']}
-                  placeholder="최대입력수"
-                  labelName="maxLength"
-                  reg="NUM"
-                  labelWidth="70px"
-                  inputWidth="100px"
-                  onChange={this.handleChangeDataText.bind(this)}
-                />
-              </div>
-              <div className="setting">
-                <ModuleList.InputText
-                  name="inputWidth"
-                  value={this.ChangeStorage.data['inputWidth']}
-                  placeholder="input 가로길이"
+                <ModuleList.FormText
                   labelName="inputWidth"
                   labelWidth="70px"
                   inputWidth="100px"
+                  name="inputWidth"
+                  value={this.ChangeStorage.data['inputWidth']}
+                  placeholder="input 길이"
                   onChange={this.handleChangeDataText.bind(this)}
                 />
+                <div className="text-group">
+                  <span className>&lt;input&gt; 태그에 가로길이 정의할수 있습니다. [ 변수형 : String ]</span>
+                </div>
+              </div>
+              <div className="setting">
+                <ModuleList.FormText
+                  labelName="value"
+                  labelWidth="70px"
+                  inputWidth="100px"
+                  name="value"
+                  value={this.ChangeStorage.data['value']}
+                  placeholder="기본값"
+                  disabled={this.ChangeStorage.data['disabled']}
+                  readOnly={this.ChangeStorage.data['readOnly']}
+                  reg={this.ChangeStorage.data['reg']}
+                  maxLength={this.ChangeStorage.data['maxLength']}
+                  minLength={this.ChangeStorage.data['minLength']}
+                  onChange={this.handleChangeDataText.bind(this)}
+                />
+                <div className="text-group">
+                  <span className>&lt;input&gt; 태그에 기본값을 정의할수 있습니다. [ 변수형 : String ]</span>
+                </div>
+              </div>
+              <div className="setting">
+                <ModuleList.FormText
+                  labelName="placeholder"
+                  labelWidth="70px"
+                  inputWidth="100px"
+                  name="placeholder"
+                  value={this.ChangeStorage.data['placeholder']}
+                  placeholder="힌트"
+                  onChange={this.handleChangeDataText.bind(this)}
+                />
+                <div className="text-group">
+                  <span className>&lt;input&gt; 태그에 힌트를 정의할수 있습니다. [ 변수형 : String ]</span>
+                </div>
+              </div>
+              <div className="setting">
+                <ModuleList.FormText
+                  labelName="minLength"
+                  labelWidth="70px"
+                  inputWidth="100px"
+                  name="minLength"
+                  value={this.ChangeStorage.data['minLength']}
+                  placeholder="최소 입력수"
+                  onChange={this.handleChangeDataText.bind(this)}
+                />
+                <div className="text-group">
+                  <span className>최소 문자열 수를 정의할수 있습니다. [ 변수형 : String ]</span>
+                </div>
+              </div>
+              <div className="setting">
+                <ModuleList.FormText
+                  labelName="maxLength"
+                  labelWidth="70px"
+                  inputWidth="100px"
+                  name="maxLength"
+                  value={this.ChangeStorage.data['maxLength']}
+                  placeholder="최대 입력수"
+                  onChange={this.handleChangeDataText.bind(this)}
+                />
+                <div className="text-group">
+                  <span className>최대 문자열 수를 정의할수 있습니다. [ 변수형 : String ]</span>
+                </div>
               </div>
               <div className="setting">
                 <ModuleList.InputCheckBox
-                  name="disabled"
-                  checked={true}
                   labelName="disabled"
                   labelWidth="70px"
+                  inputWidth="100px"
+                  name="disabled"
+                  checked={this.ChangeStorage.data['disabled']}
                   onChange={this.handleChangeDataText.bind(this)}
                 />
               </div>
               <div className="setting">
                 <ModuleList.InputCheckBox
-                  name="readOnly"
-                  checked={true}
                   labelName="readOnly"
                   labelWidth="70px"
+                  inputWidth="100px"
+                  name="readOnly"
+                  checked={this.ChangeStorage.data['readOnly']}
                   onChange={this.handleChangeDataText.bind(this)}
                 />
               </div>
@@ -164,18 +194,18 @@ class FormText extends React.Component{
           </div>
           <div className="group">
             <div className="section">
-              <ModuleList.InputText
-                name="test"
-                value={this.ChangeStorage.data['value']}
-                placeholder={this.ChangeStorage.data['placeholder']}
+              <ModuleList.FormText
                 labelName={this.ChangeStorage.data['labelName']}
                 labelWidth={this.ChangeStorage.data['labelWidth']}
                 inputWidth={this.ChangeStorage.data['inputWidth']}
-                minLength={this.ChangeStorage.data['minLength']}
-                maxLength={this.ChangeStorage.data['maxLength']}
+                name={this.ChangeStorage.data['name']}
+                value={this.ChangeStorage.data['value']}
+                placeholder={this.ChangeStorage.data['placeholder']}
                 disabled={this.ChangeStorage.data['disabled']}
                 readOnly={this.ChangeStorage.data['readOnly']}
-                reg="EN"
+                reg={this.ChangeStorage.data['reg']}
+                maxLength={this.ChangeStorage.data['maxLength']}
+                minLength={this.ChangeStorage.data['minLength']}
               />
             </div>
           </div>

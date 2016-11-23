@@ -1,7 +1,7 @@
-import InputText from './storage/InputText';
+import FormText from './storage/FormText';
 import InputCheckBox from './storage/InputCheckBox';
 
 export default {
-  InputText,
+  FormText,
   InputCheckBox
 };
