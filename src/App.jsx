@@ -11,7 +11,7 @@ class App extends React.Component {
         <Router>
           <div id="App">
             {/* 메뉴 */}
-            <Side/>
+            {/* <Side/> */}
             {/* 내용 */}
             <Body/>
           </div>
